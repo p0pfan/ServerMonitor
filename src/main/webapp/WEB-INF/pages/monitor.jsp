@@ -151,7 +151,7 @@ function b(id, chartName) {
 			enabled : false
 		},
 		series : [ {
-			name : 'Random data',
+			name : 'Usage Rate',
 			data : (function() {
 				// generate an array of random data                             
 				var data = [], time = (new Date()).getTime(), i;
