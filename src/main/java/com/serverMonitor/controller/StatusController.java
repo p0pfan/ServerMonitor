@@ -120,8 +120,8 @@ public class StatusController {
 		Session jschsession=(Session) session.getAttribute("jschsession");
 		if(jschsession!=null){
 
-			Vector<String> cpu_status=commandExecute.execute(jschsession," grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage \"%\"}'");
-			Vector<String> mem_status=commandExecute.execute(jschsession,"free | grep Mem | awk '{usage= $3/$2 * 100.0} END {print usage \"%\"} '");
+			Vector<String> cpu_status=commandExecute.execute(jschsession,CPU_COMMAND);
+			Vector<String> mem_status=commandExecute.execute(jschsession,MEM_COMMAND);
 			session.getServletContext().setAttribute("cpuUsage", cpu_status);
 			session.getServletContext().setAttribute("memUsage", mem_status);
 			

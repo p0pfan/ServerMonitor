@@ -7,6 +7,10 @@
         http://java.sun.com/xml/ns/j2ee 
         http://java.sun.com/xml/ns/j2ee/web-app_3_1.xsd" 
     version="3.1">
+    <!-- 1. 加载spring的contextLoaderListener，装配ApplicationContext-->
+    <!-- 2. 加载自定义的监听器-->
+    <!-- 3. 在context-param中加载Spring配置文件 -->
+    <!-- 4. 在servlet中加载dispatherServlet，并且springMVC的配置文件 -->
   <display-name>servermonitor</display-name>
   <listener>  
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
