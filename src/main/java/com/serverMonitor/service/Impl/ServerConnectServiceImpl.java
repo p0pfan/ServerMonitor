@@ -13,11 +13,12 @@ import com.jcraft.jsch.Channel;
 @Service("serverConnect")
 public class ServerConnectServiceImpl implements ServerConnectService {
     public static final int DEFAULT_SSH_PORT = 22;
-
+    
+    private Session session =null;
 	public Session getServerConnection(final String ipAddress, 
 			final String username, final String password) throws JSchException{
 		JSch jsch=new JSch();
-		Session session=null;
+		
 		try{
 			session= jsch.getSession(username, ipAddress, DEFAULT_SSH_PORT);
 			session.setPassword(password);

@@ -9,12 +9,12 @@
     <!-- 3. 在context-param中加载Spring配置文件 -->
     <!-- 4. 在servlet中加载dispatherServlet，并且springMVC的配置文件 -->
   <display-name>servermonitor</display-name>
-  <listener>  
+ <!--  <listener>  
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
   </listener>
   <listener>  
     <listener-class>com.serverMonitor.web.SessionListener</listener-class>  
-  </listener>  
+  </listener>   -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring/applicationContext.xml</param-value>

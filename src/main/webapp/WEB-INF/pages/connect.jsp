@@ -36,20 +36,21 @@
 			var username=  $('#username').val();
 			var password = $('#password').val();
 			$.ajax({
-				url: '/servermonitor/status/connect',
+				url: '/servermonitor/connect',
 				type: 'POST',
 				dataType: 'json',
 				data: {serverIp:serverIp,
 					   username:username,
 					   password: password},
 				success:function(data){
-					if(data.status=="1"){
+					if(data.status=="success"){
 						self.location = '/servermonitor/status/monitor';
 						/* location.reload(); */
 					}else{
 						 //location.reload();
 						 $('#username').val('');
 						 $('#password').val('');
+						 alert(data.message)
 					}
 				}
 			})
