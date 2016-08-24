@@ -16,6 +16,8 @@
 <body>
 	<h1>CPU Info</h1>
 	<div id="cpu"></div>
+	<h1>MEM Info</h1>
+	<div id="mem"></div>
 </body>
 
 <script type="text/javascript">
@@ -23,12 +25,13 @@ $(document).ready(function() {
 	
 	var id = $('#cpu').attr("id");
 	$.ajax({
-		url : '/servermonitor/status/info?item='+id,
+		url : '/servermonitor/status/info?item=all',
 		type : 'GET',
 		dataType : 'json',
 		success: function(data){
 			if(data.status == "success"){
-				$('#cpu').text(data.info);
+				$('#cpu').text(data.info.cpu);
+				$('#mem').text(data.info.mem);
 			}else{
 				alert(data.message);
 			}

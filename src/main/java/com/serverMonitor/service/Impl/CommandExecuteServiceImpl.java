@@ -2,6 +2,10 @@ package com.serverMonitor.service.Impl;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +39,22 @@ public class CommandExecuteServiceImpl implements CommandExecuteService{
 	
 	public InfoBean getStatusInfo(String item , Session session) throws JSchException{
 		InfoBean ib = new InfoBean();
-		Vector<String> stdout =new Vector<>();
+		Map<String,String> rate =new HashMap<>();
 		if(item.equals("cpu")){			
-			stdout = CommandExcute.execute(session,CPU_COMMAND);
+			Vector<String> stdout = CommandExcute.execute(session,CPU_COMMAND);
+			rate.put("cpu",stdout.get(0));
 		}
 		if(item.equals("memory")){
-			stdout = CommandExcute.execute(session,MEM_COMMAND);
+			Vector<String> stdout = CommandExcute.execute(session,MEM_COMMAND);
+			rate.put("mem",stdout.get(0));
 		}
-		ib.setInfo(stdout.get(0));
+		if(item.equals("all")){
+			Vector<String> cpu = CommandExcute.execute(session,CPU_COMMAND);
+			rate.put("cpu",cpu.get(0));
+			Vector<String> mem = CommandExcute.execute(session,MEM_COMMAND);
+			rate.put("mem",mem.get(0));
+		}
+		ib.setInfo(rate);
 		ib.setStatus(Status.success);
 		return ib;
 	}

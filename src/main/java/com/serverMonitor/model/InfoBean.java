@@ -1,12 +1,18 @@
 package com.serverMonitor.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class InfoBean {
 	private Status status;
-	private String info;
+	private Map<String,String> info;
 	private String message;
+	
 	
 	public InfoBean(){
 		this.status=Status.failed;
+		this.info = new HashMap<String,String>();
+		
 	}
 	
 	public Status getStatus() {
@@ -15,12 +21,17 @@ public class InfoBean {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	public String getInfo() {
+	
+	
+
+	public Map<String, String> getInfo() {
 		return info;
 	}
-	public void setInfo(String info) {
+
+	public void setInfo(Map<String, String> info) {
 		this.info = info;
 	}
+
 	public String getMessage() {
 		return message;
 	}
